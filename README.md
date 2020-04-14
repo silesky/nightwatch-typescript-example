@@ -1,11 +1,19 @@
-# web e2e tests
 
-- web-reservation
-- web-dispensary
-- biz-dispensary
+# Directions
+```
+// install
+npm i
 
-# can be run on any leafly.com env?
+// run chrome
+npm run chrome
 
-- local development
-- integration
-- production
+// run chrome headless
+npm run headless
+
+// run safari
+npm run safari
+
+
+// run on integration
+BASE_URL=https://www-integration.leafly.io npm run chrome
+```

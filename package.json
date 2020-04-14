@@ -1,30 +1,34 @@
 {
   "name": "leafly-web-test-nightwatch",
   "version": "1.0.0",
-  "dependencies": {
+  "devDependencies": {
     "@types/nightwatch": "^1.1.3",
     "@types/node": "^13.11.1",
+    "@types/rimraf": "^3.0.0",
+    "@typescript-eslint/eslint-plugin": "^2.27.0",
+    "@typescript-eslint/parser": "^2.27.0",
     "chromedriver": "^81.0.0",
+    "eslint": "^6.8.0",
+    "eslint-config-prettier": "^6.10.1",
+    "eslint-plugin-prettier": "^3.1.2",
     "geckodriver": "^1.19.1",
     "nightwatch": "^1.3.4",
-    "phantomjs": "^2.1.7"
-  },
-  "devDependencies": {
+    "prettier": "^2.0.4",
+    "selenium-server": "^3.141.59",
+    "typescript": "^3.8.3",
     "babel-core": "^6.26.3",
     "babel-plugin-add-module-exports": "^1.0.2",
-    "babel-preset-es2015": "^6.24.1",
-    "prettier": "^2.0.4",
-    "selenium-download": "^2.0.15",
-    "selenium-server": "^3.141.59",
-    "tslint": "^6.1.1",
-    "typescript": "^3.8.3"
+    "rimraf": "^3.0.2"
   },
   "scripts": {
-    "chrome": "tsc && nightwatch -e chrome -c ./build/nightwatch.conf.js",
-    "firefox": "tsc && nightwatch -e firefox -c ./build/nightwatch.conf.js"
-  },
-  "description": "- web-reservation - web-dispensary - biz-dispensary",
-  "main": "index.js",
-  "author": "",
-  "license": "ISC"
+    "nw": "rm -rf dist && tsc && nightwatch -c ./nightwatch.conf.js",
+    "headless": "npm run nw",
+    "chrome": "npm run nw -- -e chrome",
+    "safari": "npm run nw -- -e safari",
+    "lint": "tsc --noEmit && eslint '**/*.ts' '**/*.js' --quiet",
+    "lint:fix": "npm run lint -- --fix",
+    "tsc:check": "tsc --noEmit",
+    "build": "tsc",
+    "build:watch": "tsc -w"
+  }
 }

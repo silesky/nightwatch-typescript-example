@@ -2,3 +2,7 @@
 node_modules/
 # production server output
 dist
+screenshots
+reports
+# selenium logs
+selenium-server.log
