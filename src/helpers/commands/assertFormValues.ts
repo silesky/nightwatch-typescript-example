@@ -1,26 +1,22 @@
-/**
- * @typedef {Object} FormElement
- * @property {string} selector
- * @property {string} value
- * @property {string?} expectedValue
- * @property {string?} iframeID
- *
- * @example {selector: '#phone', value: '555123333' expectedValue: '' })
- *
- *  Asserts many form values programatically
- *
- * @param {Object} args
- * @param {Object} args.page
- * @param {Object<string, FormElement>} args.form
- * @param {string[]?} args.blacklist
- *
- * @returns {Object} page object
- *
- * @example
- * setAllFormValues({ page: this, form, blacklist: [] })
- */
-export const command = function ({ form = {}, blacklist = [] }) {
-  Object.keys(form).forEach((k) => {
+import { Nightwatch } from 'nightwatch';
+
+type FormElement = {
+  selector: string;
+  value: string;
+  expectedValue: string;
+  iframeID?: string;
+};
+
+type Blacklist = string[];
+
+export type ManipulateFormValues = (
+  this: Nightwatch,
+  form: Record<string, FormElement>,
+  blacklist: Blacklist,
+) => Nightwatch;
+
+export const command: ManipulateFormValues = function (form, blacklist) {
+  (Object.keys(form) as Array<keyof typeof form>).forEach((k) => {
     const { expectedValue, value, selector, iframeID } = form[k];
     const assertedValue = expectedValue || value;
     if (!blacklist.includes(k)) {

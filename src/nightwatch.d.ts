@@ -14,4 +14,8 @@ declare module 'nightwatch' {
   interface NightwatchCustomPageObjects {
     Home(): HomePage;
   }
+
+  export interface NightwatchCustomCommand {
+    (this: Nightwatch, ...args: any[]): Nightwatch;
+  }
 }
