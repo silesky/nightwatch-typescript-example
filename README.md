@@ -13,7 +13,9 @@ npm run headless
 // run safari
 npm run safari
 
-
-// run on integration
-BASE_URL=https://www-integration.leafly.io npm run chrome
+// run on foo
+BASE_URL=https://foo.com npm run chrome
 ```
+
+# add Page Objects types on the global "browser" object
+- see `src/nightwatch.d.ts`

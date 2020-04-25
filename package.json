@@ -1,5 +1,5 @@
 {
-  "name": "leafly-web-test-nightwatch",
+  "name": "nightwatch-typescript-example",
   "version": "1.0.0",
   "devDependencies": {
     "@types/nightwatch": "^1.1.3",
@@ -21,7 +21,7 @@
     "rimraf": "^3.0.2"
   },
   "scripts": {
-    "nw": "rm -rf dist && tsc && nightwatch -c ./nightwatch.conf.js",
+    "nw": "tsc && nightwatch -c ./nightwatch.conf.js",
     "headless": "npm run nw",
     "chrome": "npm run nw -- -e chrome",
     "safari": "npm run nw -- -e safari",
